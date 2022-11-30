@@ -1,9 +1,6 @@
 
     Andre Robledo de los Santos   / 2021670 / Programacion Basica Grupo 10
 
-
-[ actualmente por motivos de una actualizacion aleatoria de microsoft con su buscador web, no poseo actualmente la contrasena de mi cuenta de gifthub, y mi computadora no esta en sus mejores momentos asi que tampoco pude usar VisualStudio, perdon por las molestias ]
-
 - - - - - - - - - - - - - - - - - - - - - - - 
 
 #include<iostream>
