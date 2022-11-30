@@ -1,0 +1,260 @@
+
+    Andre Robledo de los Santos   / 2021670 / Programacion Basica Grupo 10
+
+
+[ actualmente por motivos de una actualizacion aleatoria de microsoft con su buscador web, no poseo actualmente la contrasena de mi cuenta de gifthub, y mi computadora no esta en sus mejores momentos asi que tampoco pude usar VisualStudio, perdon por las molestias ]
+
+- - - - - - - - - - - - - - - - - - - - - - - 
+
+#include<iostream>
+#include<string.h>
+#include<string>
+#include<fstream>
+
+using namespace std;
+
+struct info {
+
+	char nombre[100];
+        char fecha[100];
+	char descripcion[300];
+        char info[300];
+        char genero[100];
+        char categoria[100];
+	int NumArt;
+        int precio;
+        int iva;
+        int soloiva;
+
+}Articulo[3];
+
+int Buscador[100];
+
+int main()
+{
+	int opmenu, i=0, y=0, cont = 0 , buscadorA, n=1, conf, manual;    
+
+          cout << "\t***=== Manual para los Administradores [ version 1.0 ] ===***\n";
+          cout << "------------------------------------------------------------\n";
+          cout << "Bienvenido al manual oficial para Administracion de Articulos [version 1.0]\n";
+          cout << "Este programa esta hecho con el proposito de organizar y guardar informacion de articulos [videojuegos]\n"; 
+          cout << "En este programa contiene un total de 6 opciones por el cual ingresas un numero incluyendo:\n";
+          cout << " 1 - Agregar [ sirve para agregar nuevos articulos al programa incluyendo sus datos y caracteristicas\n"; 
+          cout << " - - - - - - - y crea un No. de articulo en el proceso ]\n";
+          cout << " 2 - Modificar [ sirve para cambiar un articulo ya existente, se requiere a fuerzas un numero de articulo\n";
+          cout << " - - - - - - - - en la cual se genera por medio de la opcion 1. El No. de Articulo no cambia.] \n";
+          cout << " 3 - Eliminar [ sirve para eliminar el numero de articulo de un producto para que no pueda aparecer en la lista\n";
+          cout << " - - - - - - - oficial. El numero de articulo no se puede reutilizar]\n";
+          cout << " 4 - lista [ muestra la lista de todos los articulos con numero de articulo existente]\n";
+          cout << " 5 - limpiar [ (aparece tanto en el menu principal como en la parte final de cada opcion) sirve para\n";
+          cout << " - - - - - - eliminar los textos de la pantalla y regresar al menu, con el fin de ser mas visible.\n;
+          cout << " - - - - - - La informacion no se elimina ]\n;
+          cout << " 6 - salir [ sirve para cerrar el programa, perdiendo toda la informacion en el proceso, pero se guarda\n;
+          cout << " - - - - - - un archivo de texto en el proceso para guardar dicha informacion ]\n;
+          cout << " cerrar directamente este programa sin usar la opcion 6 provoca perdida de informacion\n";
+          cout << " sin poder guardar dicha informacion en un archivo de notas, tomalo en cuenta\n ...\n";
+        cout << " ............................................................................\n";
+	cout << "\t***=== Administracion de Articulos [ Version 1.0 ] ===***\n";
+	cout << "bienvenido usuario, ingrese uno de las siguientes opciones dadas\n";
+	cout << "1- Agregar un nuevo articulo\n2- Modificar un articulo ya existente\n3- Eliminar articulo del programa\n4- Lista oficial de articulos Vigentes\n5- Limpiar pantalla\n6- Salir del Programa\n";
+	scanf_s("%d", &opmenu);
+	printf(" - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"); // agrege estas lineas por presentacion y lograr mirar las acciones realizadas de mejor manera
+	switch (opmenu)                                                     // sin necesidad de limpiar la pantalla por la opcion numero 5
+	{
+	case 1:
+                i = y;
+		if ( i < n )
+		{ 
+			cout << "Agrega su nuevo articulo deseado empezando con el nombre\n";
+			scanf_s("%s", &Articulo[i].nombre);
+                        cout << "Tambien ingrese la fecha que se desea publicar [con palabras]\n";
+                        scanf_s("%s", &Articulo[i].fecha);
+			cout << "se guardo con exito, ahora ingresa una descripcion para tu articulo\n";
+			scanf_s("%s", &Articulo[i].descripcion);
+                        cout << "Agrega ahora sus caracteristicas deseadas a mostrar\n";
+                        scanf_s("%s", &Articulo[i].info);
+                        cout << "Agrega su genero\n";
+                        scanf_s("%s", &Articulo[i].genero);
+                        cout << "Agrega su categoria\n";
+                        scanf_s("%s", &Articulo[i].categoria);                       
+                        cout << "Finalmente agrega su precio en pesos mexicanos\n";
+                        scanf_s("%d", &Articulo[i].precio);
+			printf("guardando datos . . .\n");
+			Articulo[i].NumArt = 20220000 + i;
+                        Articulo[i].soloiva = Articulo[i].precio * 0.16;
+                        Articulo[i].iva = Articulo[i].precio * 1.16;
+			printf("Numero de Articulo = %d", Articulo[i].NumArt);
+			printf("...\n");
+                    for (int z = 0; z < 2)
+                       {
+                        printf("Desea agregar otro articulo? presion 1 para confirmar, presione 2 para terminar\n");
+                        scanf_s("%d", &conf);
+                            switch (conf)
+                            {
+                             case 1:
+                                     n = n + 1;
+                                     z = z + 2;
+                                     break;
+                             case 2:
+                                     printf("Entendido\n");
+                                     z = z + 2;
+                                     break;
+                             default:
+                                     printf("invalida opcion");
+                             }
+                        }
+                i = i + 1;
+		}
+                y = i;
+		printf("Gracias por ingresar sus nuevos productos\n");
+                printf("desea limpiar pantalla? presione 1 para limpiar, presione otro numero para ignorar\n");
+                scanf_s("%d", &conf);
+                if (conf == 1)
+                {
+                system("cls");
+                }
+		printf(" - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
+		return main();
+		break;
+	case 2:
+		cout << "Ingrese su numero de Articulo deseado a cambiar\n";
+		scanf_s("%d", &buscadorA);
+		for (int i = 0; i < n; i++)
+		{
+			if (buscadorA == Articulo[i].NumArt)  // se busca por numero de articulo para hacer una busqueda mas facil
+			{
+				cout << "ingrese su nuevo nombre\n";
+				scanf_s("%s", &Articulo[i].nombre);
+                                cout << "ingrese su nueva fecha de lanzamiento\n";
+                                scanf_s("%s", &Articulo[i].fecha);
+				cout << "se guardo con exito, ahora ingresa una nueva descripcion para tu articulo\n";
+				scanf_s("%s", &Articulo[i].descripcion);
+                                cout << "Agrega ahora sus caracteristicas deseadas a mostrar\n";
+                                scanf_s("%s", &Articulo[i].info);
+                                cout << "Ahora agrega su genero\n";
+                                scanf_s("%s", &Articulo[i].genero);
+                                cout << "Agrega su nueva categoria\n";
+                                scanf_s("%s", &Articulo[i].categoria); 
+                                cout << "finalmente ingrese su nuevo precio\n";
+                                scanf_s("%d", &Articulo[i].precio);
+			        printf("guardando datos . . .\n");
+			        i = i + n;
+                                Articulo[i].soloiva = Articulo[i].precio * 0.16;
+                                Articulo[i].iva = Articulo[i].precio * 1.16;
+			}        // se suma n al i para identificar si es un articulo existente o no en el siguiente if
+			
+		}
+		if (i == n) // si no se escuntra ningun articulo i tendria actualmente el valor igual a n
+		{
+			printf("Su No. de articulo no existe o esta equivocado\n Regresando al menu principal...\n");
+		}
+                printf("desea limpiar pantalla? presione 1 para limpiar, presione otro numero para ignorar\n");
+                scanf_s("%d", &conf);
+                if (conf == 1)
+                {
+                system("cls");
+                }
+		printf(" - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
+		return main();
+		break;
+	case 3:
+		 cout << "Ingrese su numero de Articulo deseado a eliminar\n";
+		 scanf_s("%d", &buscadorA);
+		 for (int i = 0; i < n; i++)
+		 {
+			 if (buscadorA == Articulo[i].NumArt)
+			 {
+				 Articulo[i].NumArt = 0;
+				 printf("Eliminado con exito!\n");
+				 i = i + n;
+			 }
+		 }
+		 if (i == n)
+		 {
+			 printf("Su No. de Articulo es incorrecto o no existe\n Regresando a Menu Principal\n");
+		 }
+                printf("desea limpiar pantalla? presione 1 para limpiar, presione otro numero para ignorar\n");
+                scanf_s("%d", &conf);
+                if (conf == 1)
+                {
+                system("cls");
+                }
+		 printf(" - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
+		return main();
+		break;
+	case 4:
+		printf("\t***=== Lista Oficial de Articulos [ Formato Lista ] ===***\n");
+		for (int i = 0; 1 < n; i++)
+		{
+			
+                        if (Articulo[i].NumArt > 0)
+                        {
+                        cont = cont + 1;
+			printf(" - %d", cont, " -  %s", Articulo[i].nombre);
+			printf(".\n Numero de Articulo:  %s", Articulo[i].NumArt);
+			printf(".\n Descripcion:\n %s", Articulo[i].descripcion);
+                        printf(".\n Caracteristicas:\n %s", Articulo[i].info);
+                        printf(".\n Genero:\n %s", Articulo[i].genero);
+                        printf(".\n Categoria:\n %s", Articulo[i].categoria
+                        printf(".\n Precio:\n $ %d", Articulo[i].precio);
+                        printf(".\n iva:\n $ %d", Articulo[i].soloiva);
+                        printf(".\n Precio [con iva]:\n $ %d",Articulo[i].iva);
+                        printf(".\n ...................................................\n");
+                        }
+		}
+		printf("...\n");
+                printf("desea limpiar pantalla? presione 1 para limpiar, presione otro numero para ignorar\n");
+                scanf_s("%d", &conf);
+                if (conf == 1)
+                {
+                system("cls");
+                }
+		printf(" - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
+		return main();
+		break;
+	case 5:
+		cout << "se limpiara la pantalla y se escondera toda informancion\n";
+		cout << "se realizara una pausa antes de ocultar la informacion\n";
+		system("pause");
+		system("cls"); //se realizan pausas si el usuario quiere ver algo exactamente antes de borrar la pantalla
+		return main();
+		break;
+	case 6:
+		cout << "gracias por usar el programa\n";
+		cout << "se realizara una pausa antes de apagar el programa y se guardara en un archivo .txt\n";
+                cout << "se llamara GamePlanetList y se ubicara en la zona de archivos\n"
+                cout << "presione [enter] para cerrar el programa y guardar el archivo exitosamente\n";
+		system("pause");
+                ofstream file;
+                file.open("c:/ruta/archivos/GamePlanetList.txt");
+                file << "=== Lista Oficial de Articulos [ Formato Lista ] ===\n";
+                file << "----------------------------------------------------\n";
+		 for (int i = 0; 1 < n; i++)
+		 {
+			
+                        if (Articulo[i].NumArt > 0)
+                        {
+                        cont = cont + 1;
+			file << " - ", cont, " - ", Articulo[i].nombre;
+			file << ".\n Numero de Articulo:", Articulo[i].NumArt);
+			file << ".\n Descripcion:\n", Articulo[i].descripcion);
+                        file << ".\n Caracteristicas:\n", Articulo[i].info);
+                        file << ".\n Genero:\n", Articulo[i].genero);
+                        file << ".\n Categoria:\n", Articulo[i].categoria);
+                        file << ".\n Precio:\n $", Articulo[i].precio);
+                        file << ".\n iva:\n $", Articulo[i].soloiva);
+                        file << ".\n Precio [con iva]:\n $",Articulo[i].iva);
+                        file << ".\n ...................................................\n");
+                        }
+		}
+               file.close();
+               return 0;
+               cout << "listo :D\n";
+               break;
+		
+	default:
+		cout << "[ Error : su opcion no existe, vuelve a intentar ]\n"; //tambien aqui
+		system("pause");
+		return main();
+	}
+}
